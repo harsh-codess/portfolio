@@ -156,56 +156,68 @@ textarea {
   width: 92%;
   ; }
 
+/* Common Button Styles */
 .btn {
-  background: #fff;
-  color: #333;
+  background: linear-gradient(135deg, #7f00ff, #9b4dca); /* Initial gradient */
+  background-size: 200% 200%; /* Make the gradient larger to allow movement */
+  padding: 1.5rem 5rem;
+  font-size: 2rem;
+  color: white;
   text-transform: uppercase;
   letter-spacing: 2px;
-  display: inline-block;
+  display: inline-flex; /* Align icon and text */
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
-  border-radius: 50px; /* 🔥 Rounder, cleaner */
+  border-radius: 50px; /* Rounder, cleaner button */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
+  gap: 1rem; /* Space between icon and text */
+  animation: moveGradient 3s ease infinite; /* Animation to move gradient */
 }
 
+/* Moving Gradient Animation */
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%; /* Start from the left */
+  }
+  50% {
+    background-position: 100% 50%; /* Move to the right */
+  }
+  100% {
+    background-position: 0% 50%; /* Return to start */
+  }
+}
+
+/* Hover Effects */
 .btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
 }
 
-.btn--bg {
-  padding: 1.5rem 8rem;
-  font-size: 2rem;
+/* Depth Effect on Hover */
+.btn--theme:hover {
+  box-shadow: 0 16px 40px rgba(128, 0, 255, 0.6); /* Adds more depth to the button on hover */
+  transform: translateY(-5px); /* A bit more elevation */
 }
 
-.btn--med {
-  padding: 1.5rem 5rem;
-  font-size: 1.8rem;
-}
-
-/* 🔥 Updated Blue Button */
-.btn--theme {
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
-  color: #ffffff;
-  border: none;
-  box-shadow: 0 6px 18px rgba(0, 114, 255, 0.4);
-}
-
-/* 🔁 Inverted Button */
+/* Inverted Button */
 .btn--theme-inv {
-  color: #0072ff;
+  color: #7f00ff;
   background: #e6e6e6;
-  border: 2px solid #0072ff;
+  border: 2px solid #7f00ff;
   box-shadow: none;
   padding: calc(1.5rem - 2px) calc(5rem - 2px);
   transition: all 0.3s ease;
 }
 
 .btn--theme-inv:hover {
-  background: #0072ff;
+  background: #7f00ff;
   color: #fff;
 }
+
+
 
 
 .sec-pad {
