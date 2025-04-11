@@ -217,6 +217,38 @@ textarea {
   color: #fff;
 }
 
+.btn--black {
+  background: #000;
+  color: #fff;
+  background-size: 200% 200%;
+  padding: 1.5rem 5rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border-radius: 50px;
+  box-shadow: 0 8px 20px rgba(128, 0, 255, 0.3); /* Purple glow */
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  gap: 1rem;
+  animation: moveGradient 3s ease infinite; /* mimic same motion */
+}
+
+.btn--black:hover {
+  background: #111;
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(128, 0, 255, 0.6); /* Stronger purple glow on hover */
+}
+
+.custom-spacing {
+  margin-top: 2rem;
+}
+
+
+
 
 
 
