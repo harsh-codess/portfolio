@@ -750,7 +750,7 @@ textarea {
 .skill_item {
   min-width: 150px;
   margin: 0 1rem;
-  background: linear-gradient(135deg, #611670, #19011f, #611670); /* Purple gradient */
+  background: linear-gradient(135deg, #4a90e2, #3b8686, #4a90e2); /* Blue-green gradient */
   background-size: 300% 300%;
   animation: gradientMove 8s ease infinite;
   padding: 1rem;
@@ -761,6 +761,7 @@ textarea {
   position: relative;
   z-index: 1;
 }
+
 @keyframes gradientMove {
   0% {
     background-position: 0% 50%;
@@ -773,7 +774,6 @@ textarea {
   }
 }
 
-
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -783,12 +783,10 @@ textarea {
   }
 }
 
-
 .skill_item {
-  position: relative; /* Add this! */
-  overflow: hidden;   /* Prevent glow from spilling out */
+  position: relative;
+  overflow: hidden;
   z-index: 1;
-  /* rest of your styles... */
 }
 
 .skill_item::before {
@@ -798,12 +796,10 @@ textarea {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 70%); /* Lighter glow */
   z-index: 0;
-  pointer-events: none; /* So it doesn't interfere with hover */
+  pointer-events: none;
 }
-
-
 
 /* Skill Icon */
 .skill_item .skill_icon {
@@ -817,7 +813,7 @@ textarea {
   height: 48px;
   margin-bottom: 0.5rem;
   transition: transform 0.4s ease;
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4)); /* Slightly stronger glow */
 }
 
 .skill_icon img:hover {
@@ -886,6 +882,7 @@ textarea {
     transform: translateX(-50%);
   }
 }
+
 
 
 
