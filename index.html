@@ -150,59 +150,110 @@
           <h3 class="about__content-title">My Skills</h3>
           <div class="skills_carousel">
             <div class="skills_track">
+              <!-- Original Items -->
               <div class="skill_item">
                 <div class="skill_icon">
-                  <img src="assets\icons\html5.svg" alt="HTML">
+                  <img src="assets/icons/html5.svg" alt="HTML">
                 </div>
                 <p class="skill_name">HTML</p>
               </div>
               <div class="skill_item">
                 <div class="skill_icon">
-                  <img src="assets\icons\css.png" alt="CSS">
+                  <img src="assets/icons/css.png" alt="CSS">
                 </div>
                 <p class="skill_name">CSS</p>
               </div>
               <div class="skill_item">
                 <div class="skill_icon">
-                  <img src="assets\icons\neural network.png" alt="Neural Networks">
+                  <img src="assets/icons/neural network.png" alt="Neural Networks">
                 </div>
                 <p class="skill_name">Neural Networks</p>
               </div>
               <div class="skill_item">
                 <div class="skill_icon">
-                  <img src="assets\icons\react.png" alt="React">
+                  <img src="assets/icons/react.png" alt="React">
                 </div>
                 <p class="skill_name">React</p>
               </div>
               <div class="skill_item">
                 <div class="skill_icon">
-                  <img src="assets\icons\git.png" alt="Git">
+                  <img src="assets/icons/git.png" alt="Git">
                 </div>
                 <p class="skill_name">Git</p>
               </div>
               <div class="skill_item">
                 <div class="skill_icon">
-                  <img src="assets\icons\nlp.png" alt="NLP">
+                  <img src="assets/icons/nlp.png" alt="NLP">
                 </div>
                 <p class="skill_name">Natural Language Processing</p>
               </div>
               <div class="skill_item">
                 <div class="skill_icon">
-                  <img src="assets\icons\AI.png" alt="AI">
+                  <img src="assets/icons/AI.png" alt="AI">
                 </div>
                 <p class="skill_name">AI</p>
               </div>
               <div class="skill_item">
                 <div class="skill_icon">
-                  <img src="assets\icons\icons8-javascript.svg" alt="Machine Learning">
+                  <img src="assets/icons/icons8-javascript.svg" alt="JavaScript">
                 </div>
-                <p class="skill_name">JAVA SCRIPT</SCRipt></p>
+                <p class="skill_name">JavaScript</p>
+              </div>
+    
+              <!-- Duplicate Items for Infinite Loop -->
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets/icons/html5.svg" alt="HTML">
+                </div>
+                <p class="skill_name">HTML</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets/icons/css.png" alt="CSS">
+                </div>
+                <p class="skill_name">CSS</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets/icons/neural network.png" alt="Neural Networks">
+                </div>
+                <p class="skill_name">Neural Networks</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets/icons/react.png" alt="React">
+                </div>
+                <p class="skill_name">React</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets/icons/git.png" alt="Git">
+                </div>
+                <p class="skill_name">Git</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets/icons/nlp.png" alt="NLP">
+                </div>
+                <p class="skill_name">Natural Language Processing</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets/icons/AI.png" alt="AI">
+                </div>
+                <p class="skill_name">AI</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets/icons/icons8-javascript.svg" alt="JavaScript">
+                </div>
+                <p class="skill_name">JavaScript</p>
               </div>
             </div>
           </div>
         </div>
     
-        <!-- "Get to know me" Section moved below skills -->
+        <!-- "Get to know me" Section -->
         <div class="about__content-main">
           <h3 class="about__content-title">Get to know me!</h3>
           <div class="about__content-details">
@@ -218,30 +269,6 @@
       </div>
     </section>
     
-    <script>
-      // JavaScript for infinite and smooth scrolling carousel
-      let currentIndex = 0;
-      const items = document.querySelectorAll('.skill_item');
-      const totalItems = items.length;
-      const track = document.querySelector('.skills_track');
-      const itemWidth = items[0].offsetWidth; // Get width of each item
-    
-      // Function to move the carousel
-      function moveCarousel() {
-        currentIndex++;
-        if (currentIndex >= totalItems) {
-          currentIndex = 0; // Reset to the first item when we reach the end
-          track.style.transition = 'none'; // Disable transition for instant reset
-          track.style.transform = `translateX(0)`; // Reset position
-        } else {
-          track.style.transition = 'transform 0.5s ease'; // Enable transition
-          track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-        }
-      }
-    
-      // Set interval for automatic movement (every 2 seconds)
-      setInterval(moveCarousel, 2000); // Move every 2 seconds
-    </script>
     
 
     

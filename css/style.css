@@ -709,7 +709,17 @@ textarea {
   }
   
   
-/* Skills Section Styles - Now First */
+
+
+
+
+
+
+
+
+
+
+/* Skills Section Styles */
 .skills_text {
   display: flex;
   flex-direction: column;
@@ -725,63 +735,77 @@ textarea {
   overflow: hidden;
 }
 
-/* Skills Carousel */
 .skills_carousel {
-  position: relative;
   overflow: hidden;
-  margin: 2rem 0;
+  width: 100%;
   padding: 1rem 0;
 }
 
 .skills_track {
   display: flex;
-  transition: transform 1.2s ease;
-  gap: 1.5rem;
-  padding: 0 1rem;
+  width: max-content; /* Ensures it's as wide as needed */
+  animation: scroll 30s linear infinite;
 }
 
-/* Skill Card Style */
 .skill_item {
-  flex: 0 0 auto;
-  background: linear-gradient(135deg, #1e0033, #3a0055);
-  color: #ffffff;
-  padding: 1.25rem 1.75rem;
-  border-radius: 1rem;
-  font-weight: 600;
+  min-width: 150px;
+  margin: 0 1rem;
+  background: linear-gradient(135deg, #611670, #19011f, #611670); /* Purple gradient */
+  background-size: 300% 300%;
+  animation: gradientMove 8s ease infinite;
+  padding: 1rem;
+  border-radius: 10px;
   text-align: center;
-  transition: all 0.4s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  min-width: 160px;
-  max-width: 180px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  color: white;
+  flex-shrink: 0;
   position: relative;
-  overflow: hidden;
+  z-index: 1;
+}
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+.skill_item {
+  position: relative; /* Add this! */
+  overflow: hidden;   /* Prevent glow from spilling out */
+  z-index: 1;
+  /* rest of your styles... */
 }
 
 .skill_item::before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
-  transform: rotate(25deg);
   z-index: 0;
+  pointer-events: none; /* So it doesn't interfere with hover */
 }
 
-.skill_item:hover {
-  background: linear-gradient(135deg, #00ff87, #1affd5);
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 10px 25px rgba(0, 255, 150, 0.35);
-}
 
-/* Skill Icon Area */
+
+/* Skill Icon */
 .skill_item .skill_icon {
   font-size: 2rem;
   margin-bottom: 0.75rem;
@@ -796,11 +820,11 @@ textarea {
   filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
 }
 
-.skill_item:hover .skill_icon img {
-  transform: scale(1.15);
+.skill_icon img:hover {
+  transform: scale(1.1);
 }
 
-/* Skill Name Text */
+/* Skill Name */
 .skill_name {
   z-index: 1;
   font-size: 0.95rem;
@@ -852,7 +876,8 @@ textarea {
     font-size: 0.85rem;
   }
 }
-/* Keyframe for infinite scrolling */
+
+/* Keyframe for Infinite Looping Scroll */
 @keyframes scrollSkills {
   0% {
     transform: translateX(0%);
@@ -862,19 +887,11 @@ textarea {
   }
 }
 
-/* Looping effect setup */
-.skills_track {
-  display: flex;
-  gap: 1.5rem;
-  padding: 0 1rem;
-  width: max-content;
-  animation: scrollSkills 20s linear infinite; /* Adjust speed here */
-}
 
-/* Optional pause on hover */
-.skills_carousel:hover .skills_track {
-  animation-play-state: paused;
-}
+
+
+
+
 
 
 
