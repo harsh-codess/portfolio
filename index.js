@@ -38,3 +38,99 @@ headerLogoConatiner.addEventListener('click', () => {
 
   
 })
+
+
+
+  const typewriterElement = document.getElementById("typewriter-text");
+
+  const typewriterParagraphs = [
+    `Hey! It's <strong>Harsh</strong> and I'm an <strong>Integrated BTech student</strong> located in Pune, India. I'm currently working on <strong>NLP & AI</strong> projects to strengthen, improve, and build my skills in <strong>AI</strong> and <strong>Machine Learning</strong>.`,
+    `I'm a passionate developer with a strong interest in digital products and technology. I love exploring web and mobile apps across various industries, always chasing clean design and seamless user experiences. Outside of code, I enjoy listening to music — it keeps me grounded and inspired. <strong>Contact</strong> me here.`
+    
+  ];
+
+  let paragraphIndex = 0;
+  let charIndex = 0;
+  const typingSpeed = 25;
+  const paragraphDelay = 1000;
+  const loopDelay = 2500;
+
+  function typeParagraph() {
+    const text = typewriterParagraphs[paragraphIndex];
+
+    if (charIndex < text.length) {
+      const currentChar = text.charAt(charIndex);
+
+      if (currentChar === "<") {
+        const endTag = text.indexOf(">", charIndex);
+        typewriterElement.innerHTML += text.slice(charIndex, endTag + 1);
+        charIndex = endTag + 1;
+      } else {
+        typewriterElement.innerHTML += currentChar;
+        charIndex++;
+      }
+
+      setTimeout(typeParagraph, typingSpeed);
+    } else {
+      paragraphIndex++;
+
+      if (paragraphIndex < typewriterParagraphs.length) {
+        charIndex = 0;
+        typewriterElement.innerHTML += "<br><br>";
+        setTimeout(typeParagraph, paragraphDelay);
+      } else {
+        setTimeout(() => {
+          typewriterElement.innerHTML = "";
+          paragraphIndex = 0;
+          charIndex = 0;
+          typeParagraph();
+        }, loopDelay);
+      }
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", typeParagraph);
+
+
+
+
+
+  const track = document.querySelector(".skills_track");
+  const skillItems = document.querySelectorAll(".skill_item");
+  const scrollSpeed = 0.8; // Faster speed
+  
+  // Duplicate content
+  skillItems.forEach(item => {
+    const clone = item.cloneNode(true);
+    track.appendChild(clone);
+  });
+  
+  // Set the scroll amount
+  let scrollAmount = 0;
+  
+  // Animate the carousel
+  function scrollCarousel() {
+    scrollAmount += scrollSpeed;
+  
+    // When scroll hits half, reset without visible jump
+    if (scrollAmount >= track.scrollWidth / 2) {
+      scrollAmount = 0;
+    }
+  
+    track.style.transform = `translateX(-${scrollAmount}px)`;
+  
+    requestAnimationFrame(scrollCarousel);
+  }
+  
+  scrollCarousel();
+  
+  
+
+
+
+
+
+
+
+
+

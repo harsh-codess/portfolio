@@ -12,6 +12,35 @@ $breakpoint arguement choices:
 
 Inside media queries 1em is always 16px i.e 1em = 16px at every screen size only inside media queries
 */
+/* Default light theme */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 *,
 *::after,
 *::before {
@@ -34,7 +63,7 @@ html {
       font-size: 65%; } }
 
 body {
-  box-sizing: border-box;
+  box-sizing: content-box;
   position: relative;
   line-height: 1.5;
   font-family: sans-serif;
@@ -257,16 +286,23 @@ textarea {
   @media only screen and (max-width: 56.25em) {
     .sec-pad {
       padding: 8rem 0; } }
-
-.text-primary {
-  color: #ebdfdf;
-  font-size: 2.2rem;
-  text-align: center;
-  width: 100%;
-  line-height: 1.6; }
-  @media only screen and (max-width: 37.5em) {
-    .text-primary {
-      font-size: 2rem; } }
+      .text-primary {
+        color: #ebdfdf;
+        font-size: 2.2rem;
+        text-align: center;
+        width: 100%;
+        line-height: 1.6;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3); /* Subtle glowing effect */
+      }
+      
+      @media only screen and (max-width: 37.5em) {
+        .text-primary {
+          font-size: 2rem;
+        }
+      }
+      
+      
+      
 
 .d-none {
   display: none; }
@@ -288,7 +324,7 @@ textarea {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(-45deg, #4b0082, #000000, #4b0082, #000000);
+    background-color: black;
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     z-index: -1;
@@ -390,26 +426,12 @@ textarea {
   }
   
   .about {
-    background: radial-gradient(circle at top left, #2d0b45, #000000 80%);
-    padding: 10rem 3rem;
+    background: #000000; /* pitch black */
+    padding: 10rem 0; /* no horizontal padding */
+    margin: 0;
     position: relative;
     overflow: hidden;
     color: white;
-  }
-  
-  .about::before {
-    content: "";
-    position: absolute;
-    width: 180%;
-    height: 180%;
-    top: -40%;
-    left: -40%;
-    background: linear-gradient(120deg, #7f00ff, #000000, #7f00ff);
-    background-size: 300% 300%;
-    animation: pulseGradient 20s ease infinite;
-    filter: blur(100px);
-    opacity: 0.12;
-    z-index: 0;
   }
   
   @keyframes pulseGradient {
@@ -425,13 +447,13 @@ textarea {
   }
   
   .about_main_heading {
-    color: #f6f6f6;
+    color: #ffffff;
     font-size: 3.6rem;
     text-align: center;
     margin-bottom: 6rem;
-    z-index: 2;
+    text-shadow: 0 0 10px #ffffffcc, 0 0 20px #ffffff99, 0 0 30px #ffffff66;
     position: relative;
-    text-shadow: 0 0 8px #8f00ff88;
+    z-index: 2;
   }
   
   @media only screen and (max-width: 37.5em) {
@@ -444,14 +466,17 @@ textarea {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10rem;
-    z-index: 2;
     position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 0 2rem;
   }
   
   @media only screen and (max-width: 56.25em) {
     .about__content {
       grid-template-columns: 1fr;
       grid-gap: 6rem;
+      padding: 0 1.5rem;
     }
   }
   
@@ -459,12 +484,12 @@ textarea {
     font-weight: 700;
     font-size: 3.2rem;
     margin-bottom: 2rem;
-    color: #fdfcfc;
-    text-shadow: 0 0 6px #a186f9aa;
+    color: #dad4d4;
+    text-shadow: 0 0 8px #ffffffaa;
   }
   
   @media only screen and (max-width: 56.25em),
-         only screen and (max-width: 37.5em) {
+  only screen and (max-width: 37.5em) {
     .about__content-title {
       font-size: 2.5rem;
     }
@@ -473,11 +498,10 @@ textarea {
   .about__content-details-para {
     font-size: 1.85rem;
     color: #ffffff;
-    max-width: 65rem;
     line-height: 1.9;
     margin-bottom: 1rem;
-    z-index: 3;
-    position: relative;
+    max-width: 100%;
+    text-shadow: 0 0 6px #ffffff66;
   }
   
   .about__content-details-para--hl {
@@ -487,7 +511,7 @@ textarea {
   
   .about__contact-card {
     margin-top: 4rem;
-    padding: 2.5rem 3rem;
+    padding: 2.5rem;
     border-radius: 18px;
     backdrop-filter: blur(18px);
     background: rgba(255, 255, 255, 0.06);
@@ -525,10 +549,19 @@ textarea {
     text-shadow: 0 0 6px #9f9cf8aa;
   }
   
+  #typewriter-text::after {
+    content: '|';
+    animation: blink 1s step-start infinite;
+    color: #fff;
+  }
+  
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
   
   
-
-
 
 
 
@@ -549,7 +582,7 @@ textarea {
   .projects__heading {
     text-align: center;
     font-size: 4rem;
-    color: white; /* ✅ This makes your heading white */
+    color: white;
     margin-bottom: 6rem;
   }
   
@@ -560,27 +593,36 @@ textarea {
     margin-bottom: 7rem;
     padding: 2.5rem;
     border-radius: 14px;
-    background: linear-gradient(135deg, rgba(128, 0, 255, 0.15), rgba(0, 0, 0, 0.7));
-    box-shadow: 0 0 25px rgba(128, 0, 255, 0.1);
+    background-color: black;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+    backdrop-filter: blur(14px);
+    position: relative;
+    overflow: hidden;
   }
   
   .projects__row:hover {
-    box-shadow: 0 0 45px rgba(128, 0, 255, 0.3);
+    box-shadow: 0 0 45px rgba(255, 255, 255, 0.3);
     transform: translateY(-5px);
   }
   
   .projects__row-img-cont {
     overflow: hidden;
     border-radius: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 100%; /* Full width */
+    height: 400px; /* Default height */
   }
   
   .projects__row-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
+    object-fit: cover; /* Ensure image covers the container area */
     transition: transform 0.4s ease;
+    border-radius: 10px;
   }
   
   .projects__row-img:hover {
@@ -610,12 +652,16 @@ textarea {
     margin-bottom: 3rem;
   }
   
-  /* Mobile Responsive */
+  /* Media Queries */
   @media only screen and (max-width: 56.25em) {
     .projects__row {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr; /* Stack images and text vertically */
       grid-gap: 3rem;
       text-align: center;
+    }
+  
+    .projects__row-img-cont {
+      height: 300px; /* Adjust the height for smaller screens */
     }
   
     .projects__row-content {
@@ -633,7 +679,13 @@ textarea {
     .projects__row-content-desc {
       font-size: 1.8rem;
     }
+  
+    .projects__row-img-cont {
+      height: 250px; /* Further reduce the height on even smaller screens */
+    }
   }
+  
+  
   
   
         
@@ -710,178 +762,135 @@ textarea {
   
   
 
+  .skills {
+    background: linear-gradient(to right, #000000, #434343);
+    padding: 8rem 2rem;
+    position: relative;
+    overflow: hidden;
+    color: white;
+  }
 
 
 
 
-
-
-
-
-
-/* Skills Section Styles */
-.skills_text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Container Styling */
-.skills_section {
-  width: 100%;
-  margin: 3rem auto 6rem;
-  padding: 0;
-  overflow: hidden;
-}
-
+  .skills_text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .skills_section {
+    width: 100%;
+    margin: 3rem auto 6rem;
+    padding: 0;
+    overflow: hidden;
+  }
+  
 .skills_carousel {
+  position: relative;
   overflow: hidden;
-  width: 100%;
-  padding: 1rem 0;
+  width: 100vw; /* Makes the carousel take up the full screen width */
+  margin: 2rem 0;
 }
 
 .skills_track {
   display: flex;
-  width: max-content; /* Ensures it's as wide as needed */
-  animation: scroll 30s linear infinite;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  will-change: transform;
 }
 
 .skill_item {
+  flex: 0 0 auto;
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.15); /* More visible border */
   min-width: 150px;
-  margin: 0 1rem;
-  background: linear-gradient(135deg, #4a90e2, #3b8686, #4a90e2); /* Blue-green gradient */
-  background-size: 300% 300%;
-  animation: gradientMove 8s ease infinite;
-  padding: 1rem;
-  border-radius: 10px;
-  text-align: center;
-  color: white;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
-}
-
-@keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.skill_item {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.skill_item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 70%); /* Lighter glow */
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Skill Icon */
-.skill_item .skill_icon {
-  font-size: 2rem;
-  margin-bottom: 0.75rem;
-  z-index: 1;
-}
-
-.skill_icon img {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 0.5rem;
-  transition: transform 0.4s ease;
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4)); /* Slightly stronger glow */
-}
-
-.skill_icon img:hover {
-  transform: scale(1.1);
-}
-
-/* Skill Name */
-.skill_name {
-  z-index: 1;
-  font-size: 0.95rem;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
-}
-
-/* Description Text */
-.skills_description {
-  max-width: 800px;
-  margin: 30px auto 30px;
-  text-align: center;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-/* Tab Layout */
-.skill-tab {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2); /* Stronger box shadow */
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(12px); /* Optional: nice glassy effect */
+  margin-right: 1.5rem; /* Add margin to the right for spacing between items */
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .skills_track {
-    gap: 1rem;
-  }
-
-  .skill_item {
-    min-width: 130px;
-    padding: 1rem;
-  }
+/* Optional: To ensure the first item is partially visible when scrolling */
+.skills_track::before {
+  content: '';
+  flex: 0 0 100px; /* Adjust this value to control how much of the first item is visible */
 }
-
-@media (max-width: 576px) {
-  .skill_item {
-    min-width: 110px;
+  
+  .skill_item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
   }
-
+  
+  .skill_item .skill_icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
   .skill_icon img {
     width: 40px;
     height: 40px;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
   }
-
-  .skill_name {
-    font-size: 0.85rem;
+  
+  .skill_item:hover .skill_icon img {
+    transform: scale(1.1);
   }
-}
-
-/* Keyframe for Infinite Looping Scroll */
-@keyframes scrollSkills {
-  0% {
-    transform: translateX(0%);
+  
+  /* Skills Description Styles */
+  .skills_description {
+    max-width: 800px;
+    margin: 30px auto 30px;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
   }
-  100% {
-    transform: translateX(-50%);
+  
+  .skill-tab {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
   }
-}
+  
+  /* Responsive Carousel Styles */
+  @media (max-width: 768px) {
+    .skills_track {
+      display: flex;
+  transition: transform 1.5s ease; /* Smooth transition */
+  gap: 1.5rem;
+  position: absolute; /* Make sure the track is positioned absolutely */
+  left: -100vw; /* Initially start off-screen (left side) */
+  width: auto;
+   gap: 1rem;
+    }
+  
+    .skill_item {
+      min-width: 120px;
+      padding: 0.75rem 1rem;
+    }
+    /* Removed empty ruleset for .custom-footer */
+  }
+  
+  @media (max-width: 576px) {
+    .skill_item {
+      min-width: 100px;
+    }
+  }
 
 
 
