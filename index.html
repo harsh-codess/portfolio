@@ -19,33 +19,36 @@
   <body>
     <header class="header">
       <div class="header__content">
+        <!-- Logo and Name -->
         <div class="header__logo-container">
           <div class="header__logo-img-cont">
             <img
-              src="assets\png\download (2).jpg"
+              src="assets/png/download (2).jpg"
               alt="logo"
               class="header__logo-img"
             />
           </div>
           <span class="header__logo-sub">Harsh Gidwani</span>
         </div>
+    
+        <!-- Main Navigation -->
         <div class="header__main">
           <ul class="header__links">
             <li class="header__link-wrapper">
-              <a href="./index.html" class="header__link"> Home </a>
+              <a href="./index.html" class="header__link">Home</a>
             </li>
             <li class="header__link-wrapper">
-              <a href="./index.html#about" class="header__link">About </a>
+              <a href="./index.html#about" class="header__link">About & Skills</a>
             </li>
             <li class="header__link-wrapper">
-              <a href="./index.html#projects" class="header__link">
-                Projects
-              </a>
+              <a href="./index.html#projects" class="header__link">Projects</a>
             </li>
             <li class="header__link-wrapper">
-              <a href="./index.html#contact" class="header__link"> Contact </a>
+              <a href="./index.html#contact" class="header__link">Contact</a>
             </li>
           </ul>
+          
+          <!-- Hamburger Menu for Mobile -->
           <div class="header__main-ham-menu-cont">
             <img
               src="./assets/svg/ham-menu.svg"
@@ -60,6 +63,8 @@
           </div>
         </div>
       </div>
+    </header>
+    
       <div class="header__sm-menu">
         <div class="header__sm-menu-content">
           <ul class="header__sm-menu-links">
@@ -68,7 +73,7 @@
             </li>
 
             <li class="header__sm-menu-link">
-              <a href="./index.html#about"> About </a>
+              <a href="./index.html#about"> </a>
             </li>
 
             <li class="header__sm-menu-link">
@@ -139,50 +144,107 @@
             I'm Harsh Gidwani, a passionate developer with a drive for building impactful digital solutions. I specialize in AI, Machine Learning, and Web Development. I enjoy solving complex problems, learning new technologies, and turning innovative ideas into real-world projects. I'm on a mission to grow, build, and leave a mark through code.
           </span>
         </h2>
-        <div class="about__content">
-          <div class="about__content-main">
-            <h3 class="about__content-title">Get to know me!</h3>
-            <div class="about__content-details">
-              <p class="about__content-details-para">
-                Hey! It's
-                <strong>Harsh</strong>
-                and I'm a <strong> Integrated btech student  </strong> located in
-                Pune, India I'm currently working on
-                <strong> NLP & AI</strong>
-                projects for strengthening, improving, and building my skills in
-                <strong>AI</strong>
-                and <strong>Machine Learning</strong>.
-                
-              </p>
-              <p class="about__content-details-para">
-                I'm a passionate developer with a strong interest in digital products and technology.  
-                I love exploring web and mobile apps across various industries, always chasing clean design and seamless user experiences.  
-                Outside of code, I enjoy listening to music — it keeps me grounded and inspired.  
-                
-                <strong>contact</strong> me here.
-              </p>
-            </div>
-            <a href="https://www.linkedin.com/in/harsh-gidwani-497a63243/" class="btn btn--med btn--theme dynamicBgClr"
-              >Contact</a
-            >
-          </div>
-          <div class="about__content-skills">
-            <h3 class="about__content-title">My Skills</h3>
-            <div class="skills">
-              <div class="skills__skill">HTML</div>
-              <div class="skills__skill">CSS</div>
-              <div class="skills__skill">Neural Networks</div>
-              <div class="skills__skill">React</div>
-              <div class="skills__skill">GIT</div>
-              <div class="skills__skill">Natural Language Processing</div>
-              <div class="skills__skill">AI</div>
-              <div class="skills__skill">Machine Learning</div>
-              
+    
+        <!-- Skills Section with Moving Cards -->
+        <div class="about__content-skills">
+          <h3 class="about__content-title">My Skills</h3>
+          <div class="skills_carousel">
+            <div class="skills_track">
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets\icons\html5.svg" alt="HTML">
+                </div>
+                <p class="skill_name">HTML</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets\icons\css.png" alt="CSS">
+                </div>
+                <p class="skill_name">CSS</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets\icons\neural network.png" alt="Neural Networks">
+                </div>
+                <p class="skill_name">Neural Networks</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets\icons\react.png" alt="React">
+                </div>
+                <p class="skill_name">React</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets\icons\git.png" alt="Git">
+                </div>
+                <p class="skill_name">Git</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets\icons\nlp.png" alt="NLP">
+                </div>
+                <p class="skill_name">Natural Language Processing</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets\icons\AI.png" alt="AI">
+                </div>
+                <p class="skill_name">AI</p>
+              </div>
+              <div class="skill_item">
+                <div class="skill_icon">
+                  <img src="assets\icons\icons8-javascript.svg" alt="Machine Learning">
+                </div>
+                <p class="skill_name">JAVA SCRIPT</SCRipt></p>
+              </div>
             </div>
           </div>
         </div>
+    
+        <!-- "Get to know me" Section moved below skills -->
+        <div class="about__content-main">
+          <h3 class="about__content-title">Get to know me!</h3>
+          <div class="about__content-details">
+            <p class="about__content-details-para">
+              Hey! It's <strong>Harsh</strong> and I'm an <strong>Integrated BTech student</strong> located in Pune, India. I'm currently working on <strong>NLP & AI</strong> projects to strengthen, improve, and build my skills in <strong>AI</strong> and <strong>Machine Learning</strong>.
+            </p>
+            <p class="about__content-details-para">
+              I'm a passionate developer with a strong interest in digital products and technology. I love exploring web and mobile apps across various industries, always chasing clean design and seamless user experiences. Outside of code, I enjoy listening to music — it keeps me grounded and inspired. <strong>Contact</strong> me here.
+            </p>
+          </div>
+          <a href="https://www.linkedin.com/in/harsh-gidwani-497a63243/" class="btn btn--med btn--theme dynamicBgClr">Contact</a>
+        </div>
       </div>
     </section>
+    
+    <script>
+      // JavaScript for infinite and smooth scrolling carousel
+      let currentIndex = 0;
+      const items = document.querySelectorAll('.skill_item');
+      const totalItems = items.length;
+      const track = document.querySelector('.skills_track');
+      const itemWidth = items[0].offsetWidth; // Get width of each item
+    
+      // Function to move the carousel
+      function moveCarousel() {
+        currentIndex++;
+        if (currentIndex >= totalItems) {
+          currentIndex = 0; // Reset to the first item when we reach the end
+          track.style.transition = 'none'; // Disable transition for instant reset
+          track.style.transform = `translateX(0)`; // Reset position
+        } else {
+          track.style.transition = 'transform 0.5s ease'; // Enable transition
+          track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+      }
+    
+      // Set interval for automatic movement (every 2 seconds)
+      setInterval(moveCarousel, 2000); // Move every 2 seconds
+    </script>
+    
+
+    
     <section id="projects" class="projects sec-pad">
       <div class="main-container">
         <h2 class="heading heading-sec heading-sec__mb-bg">
@@ -425,6 +487,7 @@
               Thank you for visiting my portfolio. I'm always eager to learn, build, and collaborate on meaningful projects. Feel free to reach out—let's create something impactful together.
 
             </p>
+            
     <script src="./index.js"></script>
 
 

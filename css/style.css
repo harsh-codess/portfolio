@@ -709,8 +709,191 @@ textarea {
   }
   
   
+/* Skills Section Styles - Now First */
+.skills_text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container Styling */
+.skills_section {
+  width: 100%;
+  margin: 3rem auto 6rem;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Skills Carousel */
+.skills_carousel {
+  position: relative;
+  overflow: hidden;
+  margin: 2rem 0;
+  padding: 1rem 0;
+}
+
+.skills_track {
+  display: flex;
+  transition: transform 1.2s ease;
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+/* Skill Card Style */
+.skill_item {
+  flex: 0 0 auto;
+  background: linear-gradient(135deg, #1e0033, #3a0055);
+  color: #ffffff;
+  padding: 1.25rem 1.75rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 160px;
+  max-width: 180px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill_item::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
+  transform: rotate(25deg);
+  z-index: 0;
+}
+
+.skill_item:hover {
+  background: linear-gradient(135deg, #00ff87, #1affd5);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 255, 150, 0.35);
+}
+
+/* Skill Icon Area */
+.skill_item .skill_icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  z-index: 1;
+}
+
+.skill_icon img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 0.5rem;
+  transition: transform 0.4s ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+}
+
+.skill_item:hover .skill_icon img {
+  transform: scale(1.15);
+}
+
+/* Skill Name Text */
+.skill_name {
+  z-index: 1;
+  font-size: 0.95rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+/* Description Text */
+.skills_description {
+  max-width: 800px;
+  margin: 30px auto 30px;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Tab Layout */
+.skill-tab {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .skills_track {
+    gap: 1rem;
+  }
+
+  .skill_item {
+    min-width: 130px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .skill_item {
+    min-width: 110px;
+  }
+
+  .skill_icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .skill_name {
+    font-size: 0.85rem;
+  }
+}
+/* Keyframe for infinite scrolling */
+@keyframes scrollSkills {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Looping effect setup */
+.skills_track {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0 1rem;
+  width: max-content;
+  animation: scrollSkills 20s linear infinite; /* Adjust speed here */
+}
+
+/* Optional pause on hover */
+.skills_carousel:hover .skills_track {
+  animation-play-state: paused;
+}
+
+
+
+   
   
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 .project-cs-hero {
