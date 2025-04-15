@@ -871,19 +871,16 @@ textarea {
   @media (max-width: 768px) {
     .skills_track {
       display: flex;
-  transition: transform 1.5s ease; /* Smooth transition */
-  gap: 1.5rem;
-  position: absolute; /* Make sure the track is positioned absolutely */
-  left: -100vw; /* Initially start off-screen (left side) */
-  width: auto;
-   gap: 1rem;
+      gap: 1rem;
+      position: relative; /* Don't push off screen */
+      left: 0;
+      width: max-content;
     }
   
     .skill_item {
       min-width: 120px;
       padding: 0.75rem 1rem;
     }
-    /* Removed empty ruleset for .custom-footer */
   }
   
   @media (max-width: 576px) {
@@ -891,6 +888,7 @@ textarea {
       min-width: 100px;
     }
   }
+  
 
 
 
