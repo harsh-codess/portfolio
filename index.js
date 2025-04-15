@@ -45,7 +45,6 @@ headerLogoConatiner.addEventListener('click', () => {
 
   const typewriterParagraphs = [
     `Hey! It's <strong>Harsh</strong> and I'm an <strong>Integrated BTech student</strong> located in Pune, India. I'm currently working on <strong>NLP & AI</strong> projects to strengthen, improve, and build my skills in <strong>AI</strong> and <strong>Machine Learning</strong>.`,
-    `I'm a passionate developer with a strong interest in digital products and technology. I love exploring web and mobile apps across various industries, always chasing clean design and seamless user experiences. Outside of code, I enjoy listening to music — it keeps me grounded and inspired. <strong>Contact</strong> me here.`
     
   ];
 
@@ -123,11 +122,8 @@ headerLogoConatiner.addEventListener('click', () => {
   }
   
   scrollCarousel();
+
   
-  
-
-
-
 
 
 

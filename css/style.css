@@ -12,14 +12,8 @@ $breakpoint arguement choices:
 
 Inside media queries 1em is always 16px i.e 1em = 16px at every screen size only inside media queries
 */
-/* Default light theme */
 
-
-
-
-
-
-
+/* Default Light Mode Variables */
 
 
 
@@ -549,17 +543,7 @@ textarea {
     text-shadow: 0 0 6px #9f9cf8aa;
   }
   
-  #typewriter-text::after {
-    content: '|';
-    animation: blink 1s step-start infinite;
-    color: #fff;
-  }
-  
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
+
   
   
 
@@ -1003,7 +987,7 @@ textarea {
   .project-details__desc-para {
     font-size: 1.8rem;
     line-height: 1.7;
-    color: rgb(12, 9, 9);
+    color: rgb(246, 246, 246);
     margin-bottom: 2rem; }
 
 .project-details__tools-used {
@@ -1016,10 +1000,10 @@ textarea {
     margin-bottom: 1.5rem;
     margin-right: 1.5rem;
     font-size: 1.6rem;
-    background: rgba(153, 153, 153, 0.2);
+    background: rgb(14, 9, 9);
     border-radius: 5px;
     font-weight: 600;
-    color: #777; }
+    color: #060303; }
 
 .project-details__links {
   margin: 0 0; }
@@ -1263,10 +1247,10 @@ textarea {
     margin-bottom: 1.5rem;
     margin-right: 1.5rem;
     font-size: 1.6rem;
-    background: rgba(153, 153, 153, 0.2);
+    background: rgb(2, 1, 1);
     border-radius: 5px;
     font-weight: 600;
-    color: #777; }
+    color: #e4dede; }
 
 .mouse {
   width: 25px;
