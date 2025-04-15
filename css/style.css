@@ -490,12 +490,20 @@ textarea {
   }
   
   .about__content-details-para {
-    font-size: 1.85rem;
-    color: #ffffff;
-    line-height: 1.9;
-    margin-bottom: 1rem;
-    max-width: 100%;
-    text-shadow: 0 0 6px #ffffff66;
+    font-size: 2em;
+    color: #fff; /* Set a color for the text */
+    text-shadow: 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #fff;
+    /* Very light white glow effect */
+  }
+  .about__content-details {
+    margin-bottom: 20px; /* Adds space between the text and the button */
+  }
+    
+  
+  @media only screen and (max-width: 56.25em) {
+    .about__content-details-para {
+      font-size: 1.8rem;
+    }
   }
   
   .about__content-details-para--hl {

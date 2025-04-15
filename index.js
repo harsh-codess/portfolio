@@ -41,54 +41,68 @@ headerLogoConatiner.addEventListener('click', () => {
 
 
 
-  const typewriterElement = document.getElementById("typewriter-text");
+const typewriterElement = document.getElementById("typewriter-text");
 
-  const typewriterParagraphs = [
-    `Hey! It's <strong>Harsh</strong> and I'm an <strong>Integrated BTech student</strong> located in Pune, India. I'm currently working on <strong>NLP & AI</strong> projects to strengthen, improve, and build my skills in <strong>AI</strong> and <strong>Machine Learning</strong>.`,
-    
-  ];
+const typewriterParagraphs = [
+  `Hey! It's <strong>Harsh</strong> and I'm an <strong>Integrated BTech student</strong> located in Pune, India. I'm currently working on <strong>NLP & AI</strong> projects to strengthen, improve, and build my skills in <strong>AI</strong> and <strong>Machine Learning</strong>.`,
+];
 
-  let paragraphIndex = 0;
-  let charIndex = 0;
-  const typingSpeed = 25;
-  const paragraphDelay = 1000;
-  const loopDelay = 2500;
+let paragraphIndex = 0;
+let charIndex = 0;
+const typingSpeed = 25;
+const paragraphDelay = 1000;
+const loopDelay = 2500;
+let isInTag = false;
 
-  function typeParagraph() {
-    const text = typewriterParagraphs[paragraphIndex];
+function typeParagraph() {
+  const text = typewriterParagraphs[paragraphIndex];
 
-    if (charIndex < text.length) {
-      const currentChar = text.charAt(charIndex);
+  // Handle tag-based typing
+  if (charIndex < text.length) {
+    const currentChar = text.charAt(charIndex);
 
-      if (currentChar === "<") {
-        const endTag = text.indexOf(">", charIndex);
-        typewriterElement.innerHTML += text.slice(charIndex, endTag + 1);
-        charIndex = endTag + 1;
-      } else {
-        typewriterElement.innerHTML += currentChar;
-        charIndex++;
-      }
+    if (currentChar === "<") {
+      // Start reading an HTML tag
+      isInTag = true;
+    }
 
-      setTimeout(typeParagraph, typingSpeed);
+    if (isInTag) {
+      // Append the entire tag until '>'
+      const endTag = text.indexOf(">", charIndex);
+      typewriterElement.innerHTML += text.slice(charIndex, endTag + 1);
+      charIndex = endTag + 1;
+      isInTag = false;
     } else {
-      paragraphIndex++;
+      // Append a normal character
+      typewriterElement.innerHTML += currentChar;
+      charIndex++;
+    }
 
-      if (paragraphIndex < typewriterParagraphs.length) {
+    requestAnimationFrame(() => typeParagraph());
+  } else {
+    // Paragraph completed, move to next
+    paragraphIndex++;
+
+    if (paragraphIndex < typewriterParagraphs.length) {
+      charIndex = 0;
+      typewriterElement.innerHTML += "<br><br>";
+      setTimeout(() => requestAnimationFrame(typeParagraph), paragraphDelay);
+    } else {
+      // All paragraphs finished, restart the cycle
+      setTimeout(() => {
+        typewriterElement.innerHTML = "";
+        paragraphIndex = 0;
         charIndex = 0;
-        typewriterElement.innerHTML += "<br><br>";
-        setTimeout(typeParagraph, paragraphDelay);
-      } else {
-        setTimeout(() => {
-          typewriterElement.innerHTML = "";
-          paragraphIndex = 0;
-          charIndex = 0;
-          typeParagraph();
-        }, loopDelay);
-      }
+        requestAnimationFrame(typeParagraph);
+      }, loopDelay);
     }
   }
+}
 
-  window.addEventListener("DOMContentLoaded", typeParagraph);
+window.addEventListener("DOMContentLoaded", () => {
+  requestAnimationFrame(typeParagraph);
+});
+
 
 
 
