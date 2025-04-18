@@ -1178,149 +1178,156 @@ body {
         .project-details__links-btn:last-child {
           margin: 0; } }
 
-          .header {
-            position: fixed;
-            width: 100%;
-            color: #fff;
-            z-index: 1000;
-            background: #000;
-            box-shadow: 0 10px 100px rgba(231, 230, 230, 0.1);
-          }
-          
-          .header__content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 5rem;
-          }
-          
-          @media only screen and (max-width: 56.25em) {
-            .header__content {
-              padding: 0 2rem;
-            }
-          }
-          
-          /* Site name/title instead of logo */
-          .header__site-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #fff;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: color 0.3s;
-          }
-          
-          .header__site-title:hover {
-            color: purple;
-          }
-          
-          /* Desktop Menu */
-          .header__links {
-            display: flex;
-          }
-          
-          @media only screen and (max-width: 37.5em) {
-            .header__links {
-              display: none;
-            }
-          }
-          
-          .header__link {
-            padding: 2.2rem 3rem;
-            display: inline-block;
-            font-size: 1.6rem;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            transition: color 0.3s;
-          }
-          
-          .header__link:hover {
-            color: purple;
-          }
-          
-          @media only screen and (max-width: 56.25em) {
-            .header__link {
-              padding: 3rem 1.8rem;
-              font-size: 1.5rem;
-            }
-          }
-          
-          /* Hamburger Menu */
-          .header__main-ham-menu-cont {
-            display: none;
-            width: 3rem;
-            padding: 2.2rem 0;
-            cursor: pointer;
-          }
-          
-          @media only screen and (max-width: 37.5em) {
-            .header__main-ham-menu-cont {
-              display: block;
-            }
-          }
-          
-          .header__main-ham-menu,
-          .header__main-ham-menu-close {
-            width: 100%;
-          }
-          
-          .d-none {
-            display: none;
-          }
-          
-          /* Mobile Menu */
-          .header__sm-menu {
-            background: #000;
-            position: absolute;
-            width: 100%;
-            top: 100%;
-            visibility: hidden;
-            opacity: 0;
-            transition: all 0.3s;
-            box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
-            left: 0;
-          }
-          
-          .header__sm-menu--active {
-            visibility: visible;
-            opacity: 1;
-          }
-          
-          .header__sm-menu-link a {
-            display: block;
-            text-decoration: none;
-            padding: 2.5rem 3rem;
-            font-size: 1.6rem;
-            color: #fff;
-            text-align: right;
-            border-bottom: 1px solid #333;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: color 0.3s;
-          }
-          
-          .header__sm-menu-link a:hover {
-            color: purple;
-          }
-          
-          .header__sm-menu-link:first-child a {
-            border-top: 1px solid #333;
-          }
+    /* Header Styles */
+    .header {
+      position: fixed;
+      width: 100%;
+      color: #fff;
+      z-index: 1000;
+      background: #000;
+      box-shadow: 0 10px 100px rgba(231, 230, 230, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    /* Class for hiding header on scroll */
+    .header--hidden {
+      transform: translateY(-100%);
+    }
+    
+    .header__content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5rem;
+    }
+    
+    @media only screen and (max-width: 56.25em) {
+      .header__content {
+        padding: '0 2rem';
+      }
+    }
+    
+    /* Site name/title instead of logo */
+    .header__site-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .header__site-title:hover {
+      color: purple;
+    }
+    
+    /* Desktop Menu */
+    .header__links {
+      display: flex;
+    }
+    
+    @media only screen and (max-width: 37.5em) {
+      .header__links {
+        display: none;
+      }
+    }
+    
+    .header__link {
+      padding: 2.2rem 3rem;
+      display: inline-block;
+      font-size: 1.6rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+    
+    .header__link:hover {
+      color: purple;
+    }
+    
+    @media only screen and (max-width: 56.25em) {
+      .header__link {
+        padding: 3rem 1.8rem;
+        font-size: 1.5rem;
+      }
+    }
+    
+    /* Hamburger Menu */
+    .header__main-ham-menu-cont {
+      display: none;
+      width: 3rem;
+      padding: 2.2rem 0;
+      cursor: pointer;
+    }
+    
+    @media only screen and (max-width: 37.5em) {
+      .header__main-ham-menu-cont {
+        display: block;
+      }
+    }
+    
+    .header__main-ham-menu,
+    .header__main-ham-menu-close {
+      width: 100%;
+    }
+    
+    .d-none {
+      display: none;
+    }
+    
+    /* Mobile Menu */
+    .header__sm-menu {
+      background: #000;
+      position: absolute;
+      width: 100%;
+      top: 100%;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s;
+      box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+      left: 0;
+    }
+    
+    .header__sm-menu--active {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    .header__sm-menu-link a {
+      display: block;
+      text-decoration: none;
+      padding: 2.5rem 3rem;
+      font-size: 1.6rem;
+      color: #fff;
+      text-align: right;
+      border-bottom: 1px solid #333;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: color 0.3s;
+    }
+    
+    .header__sm-menu-link a:hover {
+      color: purple;
+    }
+    
+    .header__sm-menu-link:first-child a {
+      border-top: 1px solid #333;
+    }
+
+    /* Additional styles for better mobile experience */
+    @media only screen and (max-width: 37.5em) {
+      .header__content {
+        padding: 1rem 2rem;
+      }
       
-          /* Additional styles for better mobile experience */
-          @media only screen and (max-width: 37.5em) {
-            .header__content {
-              padding: 1rem 2rem;
-            }
-            
-            .header__site-title {
-              font-size: 1.8rem;
-            }
-          }
+      .header__site-title {
+        font-size: 1.8rem;
+      }
+    }
           
 
 .main-footer {

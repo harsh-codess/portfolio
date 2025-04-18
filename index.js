@@ -1,40 +1,94 @@
-    // Hamburger menu functionality
-    const hamMenuBtn = document.querySelector('.header__main-ham-menu-cont');
-    const smallMenu = document.querySelector('.header__sm-menu');
-    const headerHamMenuBtn = document.querySelector('.header__main-ham-menu');
-    const headerHamMenuCloseBtn = document.querySelector('.header__main-ham-menu-close');
-    const headerSmallMenuLinks = document.querySelectorAll('.header__sm-menu-link');
+  // Hamburger menu functionality
+  const hamMenuBtn = document.querySelector('.header__main-ham-menu-cont');
+  const smallMenu = document.querySelector('.header__sm-menu');
+  const headerHamMenuBtn = document.querySelector('.header__main-ham-menu');
+  const headerHamMenuCloseBtn = document.querySelector('.header__main-ham-menu-close');
+  const headerSmallMenuLinks = document.querySelectorAll('.header__sm-menu-link');
 
-    hamMenuBtn.addEventListener('click', () => {
-      if (smallMenu.classList.contains('header__sm-menu--active')) {
-        smallMenu.classList.remove('header__sm-menu--active');
-      } else {
-        smallMenu.classList.add('header__sm-menu--active');
+  hamMenuBtn.addEventListener('click', () => {
+    if (smallMenu.classList.contains('header__sm-menu--active')) {
+      smallMenu.classList.remove('header__sm-menu--active');
+    } else {
+      smallMenu.classList.add('header__sm-menu--active');
+    }
+    
+    if (headerHamMenuBtn.classList.contains('d-none')) {
+      headerHamMenuBtn.classList.remove('d-none');
+      headerHamMenuCloseBtn.classList.add('d-none');
+    } else {
+      headerHamMenuBtn.classList.add('d-none');
+      headerHamMenuCloseBtn.classList.remove('d-none');
+    }
+  });
+
+  // Close mobile menu when clicking a link
+  for (let i = 0; i < headerSmallMenuLinks.length; i++) {
+    headerSmallMenuLinks[i].addEventListener('click', () => {
+      smallMenu.classList.remove('header__sm-menu--active');
+      headerHamMenuBtn.classList.remove('d-none');
+      headerHamMenuCloseBtn.classList.add('d-none');
+    });
+  }
+
+  // Logo/site title click to home
+  const headerLogoContainer = document.querySelector('.header__logo-container');
+  headerLogoContainer.addEventListener('click', () => {
+    location.href = 'index.html';
+  });
+
+  // NEW CODE: Hide header on scroll down, show on scroll up
+  const header = document.querySelector('.header');
+  let lastScrollY = window.scrollY;
+  let scrollingTimer;
+
+  // Only apply scroll behavior on mobile devices
+  function handleScroll() {
+    // Check if viewport width is mobile-sized
+    if (window.innerWidth <= 600) {
+      // Current scroll position
+      const currentScrollY = window.scrollY;
+      
+      // Don't hide header at the top of the page
+      if (currentScrollY < 100) {
+        header.classList.remove('header--hidden');
+        lastScrollY = currentScrollY;
+        return;
       }
       
-      if (headerHamMenuBtn.classList.contains('d-none')) {
-        headerHamMenuBtn.classList.remove('d-none');
-        headerHamMenuCloseBtn.classList.add('d-none');
-      } else {
-        headerHamMenuBtn.classList.add('d-none');
-        headerHamMenuCloseBtn.classList.remove('d-none');
+      // Don't hide header when menu is open
+      if (smallMenu.classList.contains('header__sm-menu--active')) {
+        lastScrollY = currentScrollY;
+        return;
       }
-    });
-
-    // Close mobile menu when clicking a link
-    for (let i = 0; i < headerSmallMenuLinks.length; i++) {
-      headerSmallMenuLinks[i].addEventListener('click', () => {
-        smallMenu.classList.remove('header__sm-menu--active');
-        headerHamMenuBtn.classList.remove('d-none');
-        headerHamMenuCloseBtn.classList.add('d-none');
-      });
+      
+      // Determine scroll direction
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down - hide header
+        header.classList.add('header--hidden');
+      } else {
+        // Scrolling up - show header
+        header.classList.remove('header--hidden');
+      }
+      
+      lastScrollY = currentScrollY;
     }
+  }
 
-    // Logo/site title click to home
-    const headerLogoContainer = document.querySelector('.header__logo-container');
-    headerLogoContainer.addEventListener('click', () => {
-      location.href = 'index.html';
-    });
+  // Add throttled scroll listener to improve performance
+  window.addEventListener('scroll', () => {
+    if (!scrollingTimer) {
+      scrollingTimer = setTimeout(() => {
+        handleScroll();
+        scrollingTimer = null;
+      }, 100);
+    }
+  });
+
+  // Also handle resize events to apply/remove based on screen size
+  window.addEventListener('resize', handleScroll);
+  
+  // Initial check
+  handleScroll();
 
 
 
