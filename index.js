@@ -159,35 +159,78 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
+  // Enhanced infinite scroll carousel
+document.addEventListener('DOMContentLoaded', function() {
   const track = document.querySelector(".skills_track");
   const skillItems = document.querySelectorAll(".skill_item");
-  const scrollSpeed = 0.8; // Faster speed
   
-  // Duplicate content
-  skillItems.forEach(item => {
-    const clone = item.cloneNode(true);
-    track.appendChild(clone);
-  });
-  
-  // Set the scroll amount
-  let scrollAmount = 0;
-  
-  // Animate the carousel
-  function scrollCarousel() {
-    scrollAmount += scrollSpeed;
-  
-    // When scroll hits half, reset without visible jump
-    if (scrollAmount >= track.scrollWidth / 2) {
-      scrollAmount = 0;
-    }
-  
-    track.style.transform = `translateX(-${scrollAmount}px)`;
-  
-    requestAnimationFrame(scrollCarousel);
-  }
-  
-  scrollCarousel();
+  // Variables for the animation
+  const scrollSpeed = 0.8; // Speed of scrolling
+  let scrollPosition = 0;
+  let totalWidth = 0;
+  let initialSetupDone = false;
 
+  // Calculate total width of original items
+  skillItems.forEach(item => {
+    totalWidth += item.offsetWidth + parseInt(window.getComputedStyle(item).marginRight);
+  });
+
+  // Clone enough items to ensure smooth infinite scrolling
+  function setupInfiniteScroll() {
+    if (initialSetupDone) return;
+    
+    // Clear existing clones to prevent duplication if function runs multiple times
+    const existingClones = track.querySelectorAll('.skill_item-clone');
+    existingClones.forEach(clone => clone.remove());
+    
+    // Create enough clones to fill the screen at least twice
+    const viewportWidth = window.innerWidth;
+    const requiredSets = Math.ceil((viewportWidth * 3) / totalWidth);
+    
+    for (let i = 0; i < requiredSets; i++) {
+      skillItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.classList.add('skill_item-clone');
+        track.appendChild(clone);
+      });
+    }
+    
+    // Position track initially to show first set of items
+    scrollPosition = 0;
+    track.style.transform = `translateX(0px)`;
+    
+    initialSetupDone = true;
+  }
+
+  // Animate the carousel - truly infinite loop
+  function animateCarousel() {
+    // Move the track
+    scrollPosition += scrollSpeed;
+    
+    // When the first complete set of items is scrolled out, reset position
+    if (scrollPosition >= totalWidth) {
+      // Reset position to create seamless loop
+      scrollPosition = 0;
+    }
+    
+    track.style.transform = `translateX(-${scrollPosition}px)`;
+    requestAnimationFrame(animateCarousel);
+  }
+
+  // Set up the carousel
+  setupInfiniteScroll();
+  
+  // Start animation
+  animateCarousel();
+  
+  // Handle window resize
+  window.addEventListener('resize', function() {
+    // Recalculate on major resizes
+    if (!initialSetupDone) {
+      setupInfiniteScroll();
+    }
+  });
+});
   
 
 
