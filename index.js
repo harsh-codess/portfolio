@@ -233,7 +233,93 @@ document.addEventListener('DOMContentLoaded', function() {
 });
   
 
+document.addEventListener('DOMContentLoaded', () => {
+  // Select all project cards
+  const cards = document.querySelectorAll('.projects__card');
+  
+  // Create an Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      // If the card is visible
+      if (entry.isIntersecting) {
+        // Apply different animations based on card position
+        // This creates a more interesting staggered effect
+        const card = entry.target;
+        
+        // Delay based on card index for staggered appearance
+        setTimeout(() => {
+          // Pick different animation directions alternating by position or randomly
+          const position = index % 3;
+          
+          if (position === 0) {
+            card.classList.add('slide-in-from-left');
+          } else if (position === 1) {
+            card.classList.add('slide-in-from-right');
+          } else {
+            card.classList.add('slide-in-from-bottom');
+          }
+        }, index * 150); 
+        
+        observer.unobserve(card);
+      }
+    });
+  }, {
+    
+    threshold: 0.1,
+  
+    rootMargin: '0px 0px -50px 0px'
+  });
+  
+  // Observe each card
+  cards.forEach(card => {
+    observer.observe(card);
+  });
+});
 
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Select all project cards
+  const projectCards = document.querySelectorAll('.projects__card');
+  
+  // Add click event listeners to all cards
+  projectCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Only trigger if they didn't click on the button
+      if (!e.target.classList.contains('projects__card-btn')) {
+        // Get the position of the click
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        
+        // Get the card type to match confetti colors
+        let colors;
+        if (card.classList.contains('projects__card--ml')) {
+          colors = ['#00bcd4', '#80deea', '#007c91'];
+        } else if (card.classList.contains('projects__card--python')) {
+          colors = ['#4caf50', '#a5d6a7', '#2e7d32'];
+        } else if (card.classList.contains('projects__card--nlp')) {
+          colors = ['#9c27b0', '#e1bee7', '#6a0080'];
+        } else if (card.classList.contains('projects__card--web')) {
+          colors = ['#ff5722', '#ffccbc', '#c41c00'];
+        } else if (card.classList.contains('projects__card--data')) {
+          colors = ['#3f51b5', '#c5cae9', '#1a237e'];
+        } else {
+          colors = ['#ffffff', '#dddddd'];
+        }
+        
+        
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { x, y },
+          colors: colors,
+          disableForReducedMotion: true
+        });
+      }
+    });
+  });
+});
 
 
 

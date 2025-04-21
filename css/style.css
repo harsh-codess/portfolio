@@ -1099,16 +1099,67 @@ body {
 }
 
 .projects__card {
-  animation: cardAppear 0.8s forwards;
   opacity: 0;
+  animation: none; /* Override the existing animation */
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.projects__card:nth-child(1) { animation-delay: 0.1s; }
-.projects__card:nth-child(2) { animation-delay: 0.2s; }
-.projects__card:nth-child(3) { animation-delay: 0.3s; }
-.projects__card:nth-child(4) { animation-delay: 0.4s; }
-.projects__card:nth-child(5) { animation-delay: 0.5s; }
-.projects__card:nth-child(6) { animation-delay: 0.6s; }
+/* Remove all the nth-child animation delays since we'll control this with JS */
+.projects__card:nth-child(1),
+.projects__card:nth-child(2),
+.projects__card:nth-child(3),
+.projects__card:nth-child(4),
+.projects__card:nth-child(5),
+.projects__card:nth-child(6) {
+  animation-delay: 0s;
+}
+
+/* Define our slide-in animations */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation classes that will be added by JavaScript */
+.slide-in-from-left {
+  animation: slideInFromLeft 0.8s forwards cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.slide-in-from-right {
+  animation: slideInFromRight 0.8s forwards cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.slide-in-from-bottom {
+  animation: slideInFromBottom 0.8s forwards cubic-bezier(0.23, 1, 0.32, 1);
+}
 
 /* Added particle effect for cards */
 .projects__card::before {
