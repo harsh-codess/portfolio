@@ -1229,7 +1229,81 @@ if (typeof window !== 'undefined') {
 
 
 
-
+// Fix for existing Back to Top button
+document.addEventListener('DOMContentLoaded', function() {
+  // Add CSS to properly position the existing Back to Top button
+  const styleElement = document.createElement('style');
+  styleElement.textContent = `
+    /* Fix for Footer and Back to Top Button */
+    .footer__bottom {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+      z-index: 10;
+    }
+    
+    .footer__scroll-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .footer__scroll-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #64ffda;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+    
+    .footer__scroll-top:hover {
+      opacity: 1;
+      transform: translateY(-5px);
+    }
+    
+    .footer__scroll-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(30, 30, 30, 0.6);
+      border-radius: 50%;
+      margin-bottom: 8px;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .footer__scroll-top:hover .footer__scroll-icon {
+      background: rgba(40, 40, 40, 0.8);
+      border-color: rgba(100, 255, 218, 0.5);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .footer__scroll-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: #64ffda;
+    }
+    
+    .footer__scroll-top span {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    /* Make sure the footer is positioned correctly */
+    footer, .footer {
+      position: relative;
+      z-index: 10;
+    }
+  `;
+  document.head.appendChild(styleElement);
+});
 
 
 
