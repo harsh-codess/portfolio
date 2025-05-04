@@ -322,5 +322,116 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+      document.addEventListener('DOMContentLoaded', () => {
+        const button = document.getElementById('resumeBtn');
+        const particles = document.querySelector('.particles');
+        
+        // Create particle elements
+        for (let i = 0; i < 15; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particles.appendChild(particle);
+        }
+        
+        // Button click effect with particles
+        button.addEventListener('click', (e) => {
+          // Prevent immediate navigation to allow animation
+          e.preventDefault();
+          
+          // Create ripple effect
+          const x = e.clientX - button.getBoundingClientRect().left;
+          const y = e.clientY - button.getBoundingClientRect().top;
+          
+          const ripple = document.createElement('span');
+          ripple.style.position = 'absolute';
+          ripple.style.width = '1px';
+          ripple.style.height = '1px';
+          ripple.style.borderRadius = '50%';
+          ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+          ripple.style.transform = 'scale(0)';
+          ripple.style.left = `${x}px`;
+          ripple.style.top = `${y}px`;
+          ripple.style.animation = 'ripple 0.6s linear';
+          button.appendChild(ripple);
+          
+          // Animate particles
+          const particleElements = document.querySelectorAll('.particle');
+          particleElements.forEach(particle => {
+            // Random position within button
+            const px = Math.random() * button.offsetWidth;
+            const py = Math.random() * button.offsetHeight;
+            
+            // Random direction
+            const vx = (Math.random() - 0.5) * 20;
+            const vy = (Math.random() - 0.5) * 20;
+            
+            // Set initial position
+            particle.style.left = `${px}px`;
+            particle.style.top = `${py}px`;
+            particle.style.opacity = '1';
+            
+            // Animate
+            let posX = px;
+            let posY = py;
+            
+            const animate = () => {
+              posX += vx;
+              posY += vy;
+              
+              particle.style.left = `${posX}px`;
+              particle.style.top = `${posY}px`;
+              particle.style.opacity = parseFloat(particle.style.opacity) - 0.02;
+              
+              if (parseFloat(particle.style.opacity) > 0) {
+                requestAnimationFrame(animate);
+              } else {
+                particle.style.opacity = '0';
+              }
+            };
+            
+            requestAnimationFrame(animate);
+          });
+          
+          // Trigger download after animation
+          setTimeout(() => {
+            // Create a temporary anchor element
+            const downloadLink = document.createElement('a');
+            downloadLink.href = './assets/png/resume.png';
+            downloadLink.download = 'Harsh_Gidwani_Resume.png';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+          }, 600);
+        });
+    
+        // Add hover effect
+        button.addEventListener('mousemove', (e) => {
+          const rect = button.getBoundingClientRect();
+          const x = e.clientX - rect.left; 
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const angleX = (x - centerX) / centerX * 10;
+          const angleY = (y - centerY) / centerY * 10;
+          
+          button.style.transform = `perspective(1000px) rotateX(${-angleY}deg) rotateY(${angleX}deg) translateY(-3px)`;
+        });
+        
+        button.addEventListener('mouseleave', () => {
+          button.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+        
+        // Keyboard shortcut
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'r' && e.ctrlKey) {
+            e.preventDefault();
+            button.click();
+          }
+        });
+      });
+   
+      
 
 
