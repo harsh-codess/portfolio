@@ -1111,40 +1111,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   
-  // Create particle array
-  let particleArray = [];
+  // Create particles
   
-  function init() {
-    particleArray = [];
-    const particleCount = Math.min(window.innerWidth, window.innerHeight) * 0.15;
-    
-    for (let i = 0; i < particleCount; i++) {
-      const x = Math.random() * canvas.width;
-      const y = Math.random() * canvas.height;
-      particleArray.push(new Particle(x, y));
-    }
-  }
   
-  // Connect particles with lines if they're close enough
-  function connect() {
-    for (let a = 0; a < particleArray.length; a++) {
-      for (let b = a; b < particleArray.length; b++) {
-        const dx = particleArray[a].x - particleArray[b].x;
-        const dy = particleArray[a].y - particleArray[b].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        
-        if (distance < 100) {
-          const opacity = 1 - (distance/100);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.3})`;
-          ctx.lineWidth = 0.5;
-          ctx.beginPath();
-          ctx.moveTo(particleArray[a].x, particleArray[a].y);
-          ctx.lineTo(particleArray[b].x, particleArray[b].y);
-          ctx.stroke();
-        }
-      }
-    }
-  }
+  
   
   // Animation loop
   function animate() {
